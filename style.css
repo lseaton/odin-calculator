@@ -1,0 +1,80 @@
+:root {
+	--dark-pink: rgb(195, 54, 115);
+	--gray: rgb(191, 191, 191);
+	--raspberry: rgb(159, 25, 83);
+}
+
+.calculator {
+	height: 475px;
+	width: 300px;
+	background: var(--dark-pink);
+	border-radius: 20px;
+	border-style: solid;
+	border-color: var(--gray);
+	border-width: 2px;
+	padding: 30px 0px 0px 30px;
+}
+
+.display {
+	width: 265px;
+	height: 100px;
+	background: white;
+	margin-bottom: 25px;
+	border-radius: 10px;
+	border-style: solid;
+	border-color: black;
+	border-width: 2px;
+}
+
+.number-pad {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: space-between;
+	height: 250px;
+	width: 190px;
+}
+
+.number-pad button {
+	height: 60px;
+	width: 60px;
+	font-size: 20px;
+}
+
+.bottom {
+	display: flex;
+	padding-top: 10px;
+	gap: 8px;
+}
+
+.right-side {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 20px;
+}
+
+.operands {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	height: 128px;
+	gap: 3px;
+}
+
+button {
+	border-radius: 50%;
+}
+
+.operands button,
+.top button {
+	height: 40px;
+	width: 40px;
+	background: var(--raspberry);
+	color: white;
+}
+
+#plus-btn {
+	height: 50px;
+	width: 50px;
+}
