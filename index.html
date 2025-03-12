@@ -8,39 +8,41 @@
 	</head>
 	<body>
 		<div class="calculator">
-			<div class="display"></div>
+			<div class="display">
+				<p id="display-text"></p>
+			</div>
 			<div class="top">
-				<button>⏻</button>
-				<button>AC</button>
-				<button>⬅</button>
+				<button id="clear-btn">AC</button>
+				<button id="back-btn">⬅</button>
 			</div>
 			<div class="bottom">
-				<div class="number-pad">
-					<button>7</button>
-					<button>8</button>
-					<button>9</button>
-					<button>4</button>
-					<button>5</button>
-					<button>6</button>
-					<button>1</button>
-					<button>2</button>
-					<button>3</button>
-					<button>.</button>
-					<button>0</button>
-					<button>=</button>
+				<div id="number-pad">
+					<button class="digit">7</button>
+					<button class="digit">8</button>
+					<button class="digit">9</button>
+					<button class="digit">4</button>
+					<button class="digit">5</button>
+					<button class="digit">6</button>
+					<button class="digit">1</button>
+					<button class="digit">2</button>
+					<button class="digit">3</button>
+					<button id="decimal-btn">.</button>
+					<button class="digit">0</button>
+					<button id="equals-btn">=</button>
 				</div>
 				<div class="right-side">
-					<div class="operands">
-						<button>√</button>
-						<button>^</button>
-						<button>x</button>
-						<button>+/-</button>
-						<button>-</button>
-						<button>/</button>
+					<div id="operators">
+						<button id="sqrt-btn">√</button>
+						<button class="operator" id="exp-btn">^</button>
+						<button class="operator" id="mult-btn">x</button>
+						<button id="neg-btn">+/-</button>
+						<button class="operator" id="sub-btn">-</button>
+						<button class="operator" id="divide-btn">/</button>
 					</div>
-					<button id="plus-btn">+</button>
+					<button class="operator" id="plus-btn">+</button>
 				</div>
 			</div>
 		</div>
+		<script src="calculator.js"></script>
 	</body>
 </html>
