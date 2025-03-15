@@ -1,4 +1,4 @@
-//TODO: I run into trouble when using multiple non-equals operators in a row; they stop claculating. Breakpoint time
+//TODO: I run into trouble when using multiple (three) operators/equals in a row; they stop calculating
 
 let displayStr = document.getElementById("display-text").innerText;
 let num1 = null;
@@ -31,7 +31,7 @@ document.getElementById("neg-btn").addEventListener("click", negate);
 
 function getSolution() {
 	//Assumes that operatorId is true
-	let solution = "error";
+	let solution;
 	switch (operatorId) {
 		case "add-btn":
 			solution = num1 + num2;
@@ -48,28 +48,34 @@ function getSolution() {
 		case "exp-btn":
 			solution = num1 ** num2;
 			break;
+		case null:
+			solution = "null operatorId";
+			break;
 		default:
-		//pass
+			solution = "solution not initialized";
 	}
 	return solution;
 }
 
+function equals() {}
+
 function calculate(e) {
 	if (displayStr != "") {
+		if (e.target.id != "equals-btn") {
+			operatorId = e.target.id;
+		}
 		if (!num1) {
 			//Store num1 (complete display) and operator clicked
 			num1 = parseFloat(displayStr);
-			if (e.target.id != "equals-btn") {
-				operatorId = e.target.id;
-			}
-		} else {
+		} else if (!operatorJustPressed) {
 			//Store num2 (display)
 			num2 = parseFloat(displayStr);
 			displayStr = getSolution();
 			document.getElementById("display-text").innerText = displayStr;
-			//Reset everything
+			//Current display is the new num1
+			num1 = displayStr;
+			//Reset everything except num1
 			operatorId = null;
-			num1 = null;
 			num2 = null;
 		}
 		operatorJustPressed = true;
@@ -118,7 +124,7 @@ function addDecimal() {
 
 function fullReset() {
 	displayStr = "";
-	displayStr = document.getElementById("display-text").innerText;
+	document.getElementById("display-text").innerText = displayStr;
 	num1 = null;
 	num2 = null;
 	operatorId = null;
