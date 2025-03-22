@@ -1,5 +1,5 @@
 <h2>Project: Calculator from The Odin Project</h2>
-<p>A calculator project. We were challenged to build a calculator from scratch in javascript, implementing all the different operations ourselves.</p>
+<p>We were challenged to build a calculator from scratch in javascript, implementing all the different operations ourselves.</p>
 <p>See the live here: https://lseaton.github.io/odin-calculator.</p>
 <h3>Tools:</h3>
 <ul>Visual Studio Code, Git, Github</ul>
