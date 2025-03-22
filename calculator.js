@@ -115,8 +115,8 @@ function addDigit(num) {
 
 function backspace() {
 	if (currentNum == "") return;
-	let newDisplay = currentNum.substring(0, currentNum.length - 1);
-	setDisplay(newDisplay);
+	currentNum = currentNum.substring(0, currentNum.length - 1);
+	setDisplay(currentNum);
 }
 
 function addDecimal() {
