@@ -8,3 +8,5 @@
 <h3>Tools:</h3>
 <ul>Visual Studio Code, Git, Github</ul>
 <h3>Screenshots:</h3>
+
+<p>Credits: Leaf gif from dailyfina on pixabay</p>

@@ -4,6 +4,25 @@
 	--raspberry: rgb(159, 25, 83);
 }
 
+body {
+	display: flex;
+	justify-content: center;
+	padding: 50px;
+	background-image: linear-gradient(
+		135deg,
+		rgb(89, 242, 89),
+		rgb(251, 182, 194) 60%
+	);
+	height: 100vh;
+	overflow: hidden;
+}
+
+.leaf {
+	margin-top: calc(600px - 200px);
+	margin-left: 50px;
+	margin-right: 50px;
+}
+
 .calculator {
 	height: 500px;
 	width: 300px;
