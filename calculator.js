@@ -43,8 +43,8 @@ function getSolution() {
 		case "exp-btn":
 			solution = firstOperand ** secondOperand;
 			break;
-		case null:
-			solution = "null operatorId";
+		case "":
+			solution = secondOperand;
 			break;
 		default:
 			solution = "solution not initialized";
@@ -53,19 +53,21 @@ function getSolution() {
 }
 
 function equals() {
-	//Right now this is the same as calculate, just without setting the currentOperator or pushing the durrent Dispaly
+	//Right now this is the same as calculate, just without setting the currentOperator or pushing the current dispaly
 	if (currentNum == "") return;
-	if (numbers.length >= 2) {
+	numbers.push(parseFloat(currentNum));
+	if (numbers.length % 2 == 0) {
 		let solution = getSolution();
+		numbers.push(parseFloat(solution));
 		currentNum = solution;
 		setDisplay(currentNum);
 		currentOperator = "";
 	}
+	operatorJustPressed = true;
 }
 
 function calculate(e) {
 	if (currentNum == "") return;
-
 	//Add current display to numbers array
 	numbers.push(parseFloat(currentNum));
 	//If there are two or more numbers in the numbers array, calculate solution given the current operator and update display with it
