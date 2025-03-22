@@ -1,4 +1,3 @@
-//TODO: Fix negate function
 let currentNum = "";
 let numbers = [];
 let currentOperator = "";
@@ -72,20 +71,18 @@ function calculate(e) {
 //Special operators with only one num required
 function getSqrt() {
 	if (currentNum == "") return;
-	let sqrtNum;
-	sqrtNum = Math.sqrt(currentNum);
-	setDisplay(sqrtNum);
+	currentNum = Math.sqrt(currentNum);
+	setDisplay(currentNum);
 }
 
 function negate() {
 	if (currentNum == "") return;
-	let negatedNum;
 	if (currentNum > 0) {
-		negatedNum = "-" + currentNum;
+		currentNum = "-" + currentNum;
 	} else if (currentNum < 0) {
-		negatedNum = currentNum.substring(1);
+		currentNum = currentNum.substring(1);
 	}
-	setDisplay(negatedNum);
+	setDisplay(currentNum);
 }
 
 //Display functions
@@ -96,6 +93,14 @@ function addDigit(num) {
 	} else {
 		currentNum = currentNum.toString() + num.toString();
 	}
+	//Set font size smaller if required
+	if (currentNum.length > 10) {
+		document.getElementById("display-text").style.fontSize = "30px";
+	}
+	if (currentNum.length > 17) {
+		document.getElementById("display-text").style.fontSize = "20px";
+	}
+
 	setDisplay(currentNum);
 	operatorJustPressed = false;
 }
@@ -122,6 +127,7 @@ function fullReset() {
 	currentOperator = "";
 	document.getElementById("display-text").innerText = "";
 	operatorJustPressed = false;
+	document.getElementById("display-text").style.fontSize = "50px";
 }
 
 //Ease of use function
