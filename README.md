@@ -1,5 +1,5 @@
 <h2>Project: Calculator from The Odin Project</h2>
-<p>A simple calculator project. Note: this README is under construction while I work on the project</p>
+<p>A calculator project. Note: this README is under construction while I work on the project</p>
 <p>See the live here: [].</p>
 <h3>Outcomes:</h3>
 <ul>1</ul>
