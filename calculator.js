@@ -24,23 +24,24 @@ document.getElementById("sqrt-btn").addEventListener("click", getSqrt);
 document.getElementById("neg-btn").addEventListener("click", negate);
 
 function getSolution() {
-	let secondOperand = numbers[numbers.length - 1];
+	let firstOperand = parseFloat(numbers[numbers.length - 2]);
+	let secondOperand = parseFloat(currentNum);
 	let solution;
-	switch (operatorId) {
-		case "add-btn":
-			solution = secondOperand + currentNum;
+	switch (currentOperator) {
+		case "plus-btn":
+			solution = firstOperand + secondOperand;
 			break;
 		case "sub-btn":
-			solution = secondOperand - currentNum;
+			solution = firstOperand - secondOperand;
 			break;
 		case "mult-btn":
-			solution = secondOperand * currentNum;
+			solution = firstOperand * secondOperand;
 			break;
 		case "divide-btn":
-			solution = currentNum == 0 ? "Nope" : secondOperand / currentNum;
+			solution = secondOperand == 0 ? "Nope" : firstOperand / secondOperand;
 			break;
 		case "exp-btn":
-			solution = secondOperand ** currentNum;
+			solution = firstOperand ** secondOperand;
 			break;
 		case null:
 			solution = "null operatorId";
@@ -58,26 +59,25 @@ function equals() {
 		let solution = getSolution();
 		currentNum = solution;
 		setDisplay(currentNum);
-		operatorId = "";
+		currentOperator = "";
 	}
 }
 
 function calculate(e) {
 	if (currentNum == "") return;
-	currentOperator = e.target.id;
+
 	//Add current display to numbers array
-	numbers.push(currentNum);
+	numbers.push(parseFloat(currentNum));
 	//If there are two or more numbers in the numbers array, calculate solution given the current operator and update display with it
-	if (numbers.length >= 2) {
+	if (numbers.length % 2 == 0) {
 		let solution = getSolution();
+		numbers.push(parseFloat(solution));
 		currentNum = solution;
 		setDisplay(currentNum);
-		operatorId = "";
+		currentOperator = "";
 	}
+	currentOperator = e.target.id;
 	operatorJustPressed = true;
-	document.getElementById("current-num").textContent = currentNum;
-	document.getElementById("numbers").textContent = numbers;
-	document.getElementById("operator").textContent = currentOperator;
 }
 
 //Special operators with only one num required
@@ -103,14 +103,12 @@ function negate() {
 function addDigit(num) {
 	//If an operator was just pressed, reset display first
 	if (operatorJustPressed) {
-		setDisplay("");
+		currentNum = num;
+	} else {
+		currentNum = currentNum.toString() + num.toString();
 	}
-	currentNum = currentNum.toString() + num.toString();
 	setDisplay(currentNum);
 	operatorJustPressed = false;
-	document.getElementById("current-num").textContent = currentNum;
-	document.getElementById("numbers").textContent = numbers;
-	document.getElementById("operator").textContent = currentOperator;
 }
 
 function backspace() {
