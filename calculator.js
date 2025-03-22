@@ -19,7 +19,7 @@ for (let i = 0; i < operatorKeys.length; i++) {
 document.getElementById("back-btn").addEventListener("click", backspace);
 document.getElementById("clear-btn").addEventListener("click", fullReset);
 document.getElementById("decimal-btn").addEventListener("click", addDecimal);
-document.getElementById("equals-btn").addEventListener("click", equals);
+document.getElementById("equals-btn").addEventListener("click", calculate);
 document.getElementById("sqrt-btn").addEventListener("click", getSqrt);
 document.getElementById("neg-btn").addEventListener("click", negate);
 
@@ -43,27 +43,13 @@ function getSolution() {
 		case "exp-btn":
 			solution = firstOperand ** secondOperand;
 			break;
-		case "":
+		case "equals-btn":
 			solution = secondOperand;
 			break;
 		default:
 			solution = "solution not initialized";
 	}
 	return solution;
-}
-
-function equals() {
-	//Right now this is the same as calculate, just without setting the currentOperator or pushing the current dispaly
-	if (currentNum == "") return;
-	numbers.push(parseFloat(currentNum));
-	if (numbers.length % 2 == 0) {
-		let solution = getSolution();
-		numbers.push(parseFloat(solution));
-		currentNum = solution;
-		setDisplay(currentNum);
-		currentOperator = "";
-	}
-	operatorJustPressed = true;
 }
 
 function calculate(e) {
