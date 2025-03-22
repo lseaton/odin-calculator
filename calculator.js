@@ -1,3 +1,4 @@
+//TODO: Fix negate function
 let currentNum = "";
 let numbers = [];
 let currentOperator = "";
@@ -59,7 +60,7 @@ function calculate(e) {
 	//If there are two or more numbers in the numbers array, calculate solution given the current operator and update display with it
 	if (numbers.length % 2 == 0) {
 		let solution = getSolution();
-		numbers.push(parseFloat(solution));
+		numbers.push(solution);
 		currentNum = solution;
 		setDisplay(currentNum);
 		currentOperator = "";
@@ -109,8 +110,10 @@ function addDecimal() {
 	if (currentNum == "") {
 		currentNum = "0";
 	}
-	let newNum = currentNum + ".";
-	setDisplay(newNum);
+	//No repeat decimals
+	if (currentNum.slice(-1) == ".") return;
+	currentNum = currentNum + ".";
+	setDisplay(currentNum);
 }
 
 function fullReset() {
