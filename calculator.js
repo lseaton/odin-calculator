@@ -24,6 +24,7 @@ document.getElementById("sqrt-btn").addEventListener("click", getSqrt);
 document.getElementById("neg-btn").addEventListener("click", negate);
 
 function getSolution() {
+	//Ensure the operands are floats
 	let firstOperand = parseFloat(numbers[numbers.length - 2]);
 	let secondOperand = parseFloat(currentNum);
 	let solution;
@@ -52,23 +53,23 @@ function getSolution() {
 	return solution;
 }
 
+//Function that determines if it's time to get a solution, and calls getSolution if so
 function calculate(e) {
 	if (currentNum == "") return;
-	//Add current display to numbers array
+	//Pressing an operator means the user is done adding digits, so add the current number to our array now
 	numbers.push(parseFloat(currentNum));
-	//If there are two or more numbers in the numbers array, calculate solution given the current operator and update display with it
+	//If there's an even count of numbers in our array, it's time to get a solution
 	if (numbers.length % 2 == 0) {
 		let solution = getSolution();
 		numbers.push(solution);
 		currentNum = solution;
 		setDisplay(currentNum);
-		currentOperator = "";
 	}
 	currentOperator = e.target.id;
 	operatorJustPressed = true;
 }
 
-//Special operators with only one num required
+//Functions for special operators with only one number required
 function getSqrt() {
 	if (currentNum == "") return;
 	currentNum = Math.sqrt(currentNum);
@@ -87,7 +88,6 @@ function negate() {
 
 //Display functions
 function addDigit(num) {
-	//If an operator was just pressed, reset display first
 	if (operatorJustPressed) {
 		currentNum = num;
 	} else {
